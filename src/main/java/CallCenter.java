@@ -16,8 +16,12 @@ public class CallCenter {
     }
 
     public void handleCall() {
-        if (!callsQueue.isEmpty())
-            System.out.printf("Звонок %s обработан%n", callsQueue.poll().getId());
+        while (true) {
+            Call callPoll = callsQueue.poll();
+            if (callPoll != null) {
+                System.out.println("Звонок обработан");
+            }
+        }
     }
 
     public Queue<Call> getCallsQueue() {
